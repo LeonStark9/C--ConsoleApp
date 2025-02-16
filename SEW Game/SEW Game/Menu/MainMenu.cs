@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEW_Game.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +39,8 @@ namespace SEW_Game.Menu
 
             var key = Console.ReadKey(true);
 
+            MainGame game1 = new MainGame();
+
             switch (key.Key)
             {
                 case ConsoleKey.R:
@@ -45,7 +48,8 @@ namespace SEW_Game.Menu
                     break;
 
                 case ConsoleKey.S:
-                    Console.WriteLine("Blelele");
+                    game1.PrintMap(game1.MapLayout);
+                    Console.Read();
                     break;
 
                 case ConsoleKey.X:

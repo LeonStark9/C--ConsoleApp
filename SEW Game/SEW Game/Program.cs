@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SEW_Game.Menu;
+using SEW_Game.Game;
 
 namespace SEW_Game
 {
@@ -13,9 +14,10 @@ namespace SEW_Game
         static void Main(string[] args)
         {
 
-             MainMenu menu1 = new MainMenu();
-             menu1.printMenu();
-                
+            MainMenu menu1 = new MainMenu();
+            menu1.printMenu();
+
+            
         }
 
         public static StreamReader GetFile()
