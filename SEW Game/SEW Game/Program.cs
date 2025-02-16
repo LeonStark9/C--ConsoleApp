@@ -18,19 +18,14 @@ namespace SEW_Game
                 
         }
 
-        /*public static StreamReader GetFile()
+        public static StreamReader GetFile()
         {
-            if (File.Exists("highscore.txt"))
+            string filePath = "highscore.txt";
+            if (!File.Exists(filePath))
             {
-                StreamReader sr = new StreamReader("highscore.txt");
-                return sr;
+                File.Create(filePath).Close();
             }
-            else 
-            {
-                File.Create("highscore.txt");
-                StreamReader sr = new StreamReader("highscore.txt");
-                return sr;
-            }
-        }*/
+            return new StreamReader(filePath);
+        }
     }
 }

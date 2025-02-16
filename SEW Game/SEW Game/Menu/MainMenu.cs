@@ -22,8 +22,10 @@ namespace SEW_Game.Menu
             Console.WriteLine("#      #     #   #           #       #  #     #  #    ##");
             Console.WriteLine("#      #     #    ####       #       #  #     #  #     #");
 
-            //Console.WriteLine();
-            //Console.WriteLine(Program.GetFile().ReadToEnd());
+            Console.WriteLine();
+            Console.WriteLine();
+            string fileContent = Program.GetFile().ReadToEnd();
+            Console.WriteLine("Highscore: " + fileContent);
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Select Option: ");
@@ -32,7 +34,7 @@ namespace SEW_Game.Menu
             Console.WriteLine("r ==> Regeln");
             Console.WriteLine("s ==> Spielen");
             Console.WriteLine("x ==> Exit");
-            Console.SetCursorPosition(0, 10);
+            Console.SetCursorPosition(0, 13);
 
             var key = Console.ReadKey(true);
 
