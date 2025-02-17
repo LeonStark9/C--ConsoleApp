@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SEW_Game.Game;
 
 namespace SEW_Game.Menu
 {
@@ -12,7 +13,7 @@ namespace SEW_Game.Menu
         public MainMenu() { }
 
 
-        public void printMenu()
+        public void PrintMenu()
         {
             Console.Clear();
             Console.WriteLine("####      #       ####       #       #     #     #     #");
@@ -44,7 +45,7 @@ namespace SEW_Game.Menu
             switch (key.Key)
             {
                 case ConsoleKey.R:
-                    this.regelwerk();
+                    this.Regelwerk();
                     break;
 
                 case ConsoleKey.S:
@@ -58,16 +59,21 @@ namespace SEW_Game.Menu
             }
         }
 
-        public void regelwerk()
+        public void Regelwerk()
         {
             Console.Clear();
             Console.WriteLine("Regeln:");
-            Console.WriteLine("Du bist Pac Man.");
-            Console.WriteLine();
+            Console.WriteLine("Du bist Pac Man und dein Ziel ist es die Punkte auf dem Spielfeld zu essen.");
+            Console.WriteLine("Verwende folgende Tasten zur Steuerung:");
+            Console.WriteLine("W....nach oben bewegen");
+            Console.WriteLine("A....nach links bewegen");
+            Console.WriteLine("S....nach unten bewegen");
+            Console.WriteLine("D....nach rechts bewegen");
             Console.WriteLine();
             Console.Write("Drücke eine beliebige Taste um zurück zu kommen.");
             Console.ReadKey();
-            this.printMenu();
+            this.PrintMenu();
+
         }
 
         public void Testauswahl()

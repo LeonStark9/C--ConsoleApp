@@ -15,7 +15,7 @@ namespace SEW_Game
         {
 
             MainMenu menu1 = new MainMenu();
-            menu1.printMenu();
+            menu1.PrintMenu();
 
             
         }
