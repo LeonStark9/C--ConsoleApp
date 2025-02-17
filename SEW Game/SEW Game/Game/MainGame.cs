@@ -47,8 +47,10 @@ namespace SEW_Game.Game
         public void PrintMap(string[] map)
         {
             Console.Clear();
-            
+
+            string fileContent = Program.GetFile().ReadToEnd();
             Console.WriteLine("Score: ");
+            Console.WriteLine("Highscore: " + fileContent);
             Console.WriteLine();
             Console.WriteLine();
 

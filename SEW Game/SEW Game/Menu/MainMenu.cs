@@ -26,8 +26,6 @@ namespace SEW_Game.Menu
 
             Console.WriteLine();
             Console.WriteLine();
-            string fileContent = Program.GetFile().ReadToEnd();
-            Console.WriteLine("Highscore: " + fileContent);
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Select Option: ");
@@ -36,8 +34,8 @@ namespace SEW_Game.Menu
             Console.WriteLine("r ==> Regeln");
             Console.WriteLine("s ==> Spielen");
             Console.WriteLine("x ==> Exit");
-            Console.SetCursorPosition(0, 14);
-
+            Console.SetCursorPosition(0, 12);
+            
             var key = Console.ReadKey(true);
 
             MainGame game1 = new MainGame();
@@ -56,6 +54,12 @@ namespace SEW_Game.Menu
                 case ConsoleKey.X:
                     Environment.Exit(0);
                     break;
+
+                default:
+                    Console.WriteLine("Fehler!!!");
+                    Console.ReadKey(true);
+                    this.PrintMenu();
+                    break;
             }
         }
 
@@ -63,6 +67,8 @@ namespace SEW_Game.Menu
         {
             Console.Clear();
             Console.WriteLine("Regeln:");
+            Console.WriteLine("-------");
+            Console.WriteLine();
             Console.WriteLine("Du bist Pac Man und dein Ziel ist es die Punkte auf dem Spielfeld zu essen.");
             Console.WriteLine("Verwende folgende Tasten zur Steuerung:");
             Console.WriteLine("W....nach oben bewegen");
