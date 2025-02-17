@@ -35,7 +35,7 @@ namespace SEW_Game.Menu
             Console.WriteLine("r ==> Regeln");
             Console.WriteLine("s ==> Spielen");
             Console.WriteLine("x ==> Exit");
-            Console.SetCursorPosition(0, 13);
+            Console.SetCursorPosition(0, 14);
 
             var key = Console.ReadKey(true);
 
