@@ -11,11 +11,13 @@ namespace SEW_Game.Game
     {
         public MainGame() { }
 
-        public char zeichen = '0';
+        private char zeichen = '0';
 
-        public bool running = true;
+        private bool running = true;
 
-        public string pacman = "C";
+        private string pacman = "C";
+
+        private int leftPadding = 0;
 
         public void Eingabe()
         {
@@ -27,14 +29,14 @@ namespace SEW_Game.Game
                 zeichen = ein.KeyChar;
             }
         }
-        public void Game(string[] args)
+        public void Game()
         {
 
-            int x = 20; // lokale Variable
-            int y = 5;
+            int x = leftPadding + 1; // lokale Variable
+            int y = 0;
 
-            const int MAX_X = 40;
-            const int MAX_Y = 10;
+            const int MAX_X = 27;
+            const int MAX_Y = 29;
 
             // parallele Methode zum Einlesen des Tastendrucks
             var myThread = new System.Threading.Thread(Eingabe);
@@ -44,7 +46,7 @@ namespace SEW_Game.Game
             {
                 // "alte" Position => löschen
                 Console.SetCursorPosition(x, y);
-                Console.WriteLine("   ");
+                Console.WriteLine(" ");
 
                 switch (zeichen)
                 {
@@ -62,10 +64,10 @@ namespace SEW_Game.Game
                         break;
                 }
 
-                if (x < 0) x = 0;
+                if (x < leftPadding) x = leftPadding;
                 if (y < 0) y = 0;
-                if (x > MAX_X - 3) x = MAX_X - 3;
-                if (y > MAX_Y - 3) y = MAX_Y - 3;
+                if (x > MAX_X + leftPadding) x = MAX_X + leftPadding;
+                if (y > MAX_Y) y = MAX_Y;
 
                 Console.SetCursorPosition(x, y);
                 Console.WriteLine(pacman);
@@ -129,7 +131,7 @@ namespace SEW_Game.Game
             {
                 int windowWidth = Console.WindowWidth;
                 int textLength = map.Length;
-                int leftPadding = (windowWidth - textLength) / 2;
+                leftPadding = (windowWidth - textLength) / 2;
 
                 Console.SetCursorPosition(leftPadding, Console.CursorTop);
                 Console.WriteLine(line);
