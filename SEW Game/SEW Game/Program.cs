@@ -13,7 +13,7 @@ namespace SEW_Game
     {
         static void Main(string[] args)
         {
-
+            Console.SetWindowSize(75, 37);
             MainMenu menu1 = new MainMenu();
             menu1.PrintMenu();
 

@@ -18,8 +18,11 @@ namespace SEW_Game.Game
         private string pacman = "C";
 
         private int leftPadding = 0;
+        private int topPadding  = 5;
 
         private int score = 0;
+        const int MAX_X = 27;
+        const int MAX_Y = 29;
 
         public void Eingabe()
         {
@@ -34,12 +37,10 @@ namespace SEW_Game.Game
         public void Game()
         {
 
-            int x = leftPadding + 1; // lokale Variable
-            int y = 0;
+            int x = 1; // lokale Variable
+            int y = 1;
 
-            const int MAX_X = 27;
-            const int MAX_Y = 29;
-
+            
             // parallele Methode zum Einlesen des Tastendrucks
             var myThread = new System.Threading.Thread(Eingabe);
             myThread.Start();
@@ -47,8 +48,7 @@ namespace SEW_Game.Game
             while (zeichen != 'x')
             {
                 // "alte" Position => löschen
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine(" ");
+                ZeichenXYAusgeben(" ", x, y);
 
                 switch (zeichen)
                 {
@@ -66,26 +66,35 @@ namespace SEW_Game.Game
                         break;
                 }
 
-                if (x < leftPadding) x = leftPadding;
+                if (x < 0) x = MAX_X;
                 if (y < 0) y = 0;
-                if (x > MAX_X + leftPadding) x = MAX_X + leftPadding;
+                if (x > MAX_X) x = 0;
                 if (y > MAX_Y) y = MAX_Y;
-
-                Console.SetCursorPosition(x, y);
-                Console.WriteLine(pacman);
-                System.Threading.Thread.Sleep(200);
+                ZeichenXYAusgeben(pacman, x, y);
+                //Console.SetCursorPosition(x, y);
+                //Console.WriteLine(pacman);
+                System.Threading.Thread.Sleep(100);
 
             } // END while (zeichen != 'x')
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(MAX_X / 2 - 5, MAX_Y / 2);
-            Console.WriteLine("Game over!!");
+            ZeichenXYAusgeben("Game over!!", MAX_X / 2 - 5, MAX_Y / 2);
+            //Console.SetCursorPosition(MAX_X / 2 - 5, MAX_Y / 2);
+            //Console.WriteLine("Game over!!");
             Console.ReadLine();
         }
 
+        private void ZeichenXYAusgeben(string zeichen, int x, int y)
+        {
+            Console.SetCursorPosition(leftPadding + x, topPadding + y);
+            Console.Write(zeichen);
+
+        }
+       
         public bool checkCollision(int x, int y)
         {
-            if (MapLayout[x][y] == '#')
+            x = (x + MAX_X+1) % (MAX_X+1);
+            if (MapLayout[y][x] == '#')
             {
                 return true;
             }
@@ -142,12 +151,13 @@ namespace SEW_Game.Game
             Console.WriteLine();
             Console.WriteLine();
 
+            int windowWidth = Console.WindowWidth;
+            int textLength = map[0].Length;
+            leftPadding = (windowWidth - textLength) / 2;
+
             foreach (string line in map)
             {
-                int windowWidth = Console.WindowWidth;
-                int textLength = map.Length;
-                leftPadding = (windowWidth - textLength) / 2;
-
+                
                 Console.SetCursorPosition(leftPadding, Console.CursorTop);
                 Console.WriteLine(line);
             }
