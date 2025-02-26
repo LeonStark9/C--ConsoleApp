@@ -19,6 +19,7 @@ namespace SEW_Game.Game
 
         private int leftPadding = 0;
 
+        private int score = 0;
         public void Eingabe()
         {
             ConsoleKeyInfo ein;
@@ -51,16 +52,16 @@ namespace SEW_Game.Game
                 switch (zeichen)
                 {
                     case 'w':
-                        y--;
+                        if (!checkCollision(x, y - 1)) y--;
                         break;
                     case 'a':
-                        x--;
+                        if (!checkCollision(x - 1, y)) x--;
                         break;
                     case 's':
-                        y++;
+                        if (!checkCollision(x, y + 1)) y++;
                         break;
                     case 'd':
-                        x++;
+                        if (!checkCollision(x + 1, y)) x++;
                         break;
                 }
 
@@ -81,6 +82,19 @@ namespace SEW_Game.Game
             Console.ReadLine();
         }
 
+        public bool checkCollision(int x, int y)
+        {
+            if (MapLayout[x][y] == '#')
+            {
+                return true;
+            }
+            if (MapLayout[y][x] == '.')
+            {
+                score++;
+                return false;
+            }
+            return false;
+        }
 
 
         public string[] MapLayout { get; set; } = {
