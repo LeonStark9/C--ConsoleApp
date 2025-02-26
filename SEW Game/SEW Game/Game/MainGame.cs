@@ -20,6 +20,7 @@ namespace SEW_Game.Game
         private int leftPadding = 0;
 
         private int score = 0;
+
         public void Eingabe()
         {
             ConsoleKeyInfo ein;
