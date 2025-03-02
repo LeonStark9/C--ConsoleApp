@@ -17,23 +17,23 @@ namespace SEW_Game.Game
         private List<(int x, int y)> dots = new List<(int x, int y)>();
         private Thread inputThread;
         private char pacmanChar = 'C';
-        private int updateInterval = 100; // Millisekunden zwischen Updates
+        private int updateInterval = 100;
         private bool isPaused = false;
         private readonly string highscoreFile = "highscore.txt";
         private int highscore = 0;
 
-        // Tunnelkoordinaten
+
         private readonly (int x, int y)[] tunnels = {
-            (0, 14), (27, 14)  // Linker und rechter Tunnel
+            (0, 14), (27, 14)
         };
 
-        // Geister
+
         private List<Ghost> ghosts = new List<Ghost>();
         private Random random = new Random();
         private DateTime lastGhostMove = DateTime.Now;
-        private int ghostMoveInterval = 300; // Millisekunden zwischen Geisterbewegungen
+        private int ghostMoveInterval = 300;
 
-        // Geister-Klasse
+
         private class Ghost
         {
             // Change from properties to fields
@@ -70,7 +70,7 @@ namespace SEW_Game.Game
             }
         }
 
-        // Enumeration für Geister-Verhalten
+
         private enum GhostBehavior
         {
             Chase,      // Verfolgt Pac-Man direkt
@@ -109,7 +109,7 @@ namespace SEW_Game.Game
             }
             catch
             {
-                // Falls die Konsolengröße nicht geändert werden kann, ignorieren
+                
             }
         }
 
@@ -182,10 +182,10 @@ namespace SEW_Game.Game
         private void InitializeGhosts()
         {
             // Geister starten im Zentrum - dem Geisterhaus
-            ghosts.Add(new Ghost(13, 14, 'M', ConsoleColor.Red, GhostBehavior.Chase));      // Blinky - Rot
-            ghosts.Add(new Ghost(14, 14, 'M', ConsoleColor.Cyan, GhostBehavior.Ambush));    // Inky - Blau
-            ghosts.Add(new Ghost(13, 15, 'M', ConsoleColor.DarkYellow, GhostBehavior.Random)); // Clyde - Orange
-            ghosts.Add(new Ghost(14, 15, 'M', ConsoleColor.Magenta, GhostBehavior.Scatter)); // Pinky - Rosa
+            ghosts.Add(new Ghost(13, 14, 'M', ConsoleColor.Red, GhostBehavior.Chase));     
+            ghosts.Add(new Ghost(14, 14, 'M', ConsoleColor.Cyan, GhostBehavior.Ambush));    
+            ghosts.Add(new Ghost(13, 15, 'M', ConsoleColor.DarkYellow, GhostBehavior.Random));
+            ghosts.Add(new Ghost(14, 15, 'M', ConsoleColor.Magenta, GhostBehavior.Scatter));
         }
 
         private void GameLoop()
@@ -207,7 +207,6 @@ namespace SEW_Game.Game
                     lastUpdate = DateTime.Now;
                 }
 
-                // Geister bewegen
                 if ((DateTime.Now - lastGhostMove).TotalMilliseconds >= ghostMoveInterval)
                 {
                     MoveGhosts();
@@ -219,8 +218,6 @@ namespace SEW_Game.Game
                 {
                     EndGame(true);
                 }
-
-                Thread.Sleep(10); // Reduzierte CPU-Auslastung
             }
         }
 
@@ -234,7 +231,7 @@ namespace SEW_Game.Game
             }
             catch (Exception)
             {
-                // Ignoriere Zeichenfehler
+                
             }
         }
 
@@ -354,7 +351,7 @@ namespace SEW_Game.Game
                 pacmanX = newX;
                 pacmanY = newY;
 
-                // Nach jedem Zug prüfen, ob ein Geist getroffen wurde
+               
                 CheckGhostCollision();
             }
         }
@@ -621,10 +618,10 @@ namespace SEW_Game.Game
 
             Console.Clear();
 
-            // Speichere Highscore
+      
             SaveHighscore();
 
-            // Zeige Endergebnis
+     
             Console.WriteLine(won ? "Gewonnen!" : "Game Over!");
             Console.WriteLine($"Deine Punktzahl: {score}");
             Console.WriteLine($"Highscore: {highscore}");

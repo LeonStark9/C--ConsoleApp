@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SEW_Game.Menu;
-using SEW_Game.Game;
 
 namespace SEW_Game
 {
