@@ -47,8 +47,7 @@ namespace SEW_Game.Menu
                     break;
 
                 case ConsoleKey.S:
-                    game1.PrintMap(game1.MapLayout);
-                    game1.Game();
+                    game1.Start();
                     break;
 
                 case ConsoleKey.X:
