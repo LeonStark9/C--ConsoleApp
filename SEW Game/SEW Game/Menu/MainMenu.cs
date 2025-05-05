@@ -11,29 +11,32 @@ namespace SEW_Game.Menu
     {
         public MainMenu() { }
 
+        private string[] logo =
+        {
+            "\r\n░▒▓███████▓▒░ ░▒▓██████▓▒░ ░▒▓██████▓▒░       ░▒▓██████████████▓▒░ ░▒▓██████▓▒░░▒▓███████▓▒░  \r\n░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ \r\n░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░             ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ \r\n░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░             ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░ \r\n░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░             ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ \r\n░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ \r\n░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░       ░▒▓█▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ \r\n                                                                                              \r\n                                                                                              \r\n"
+        };
 
         public void PrintMenu()
         {
             Console.Clear();
-            Console.WriteLine("####      #       ####       #       #     #     #     #");
-            Console.WriteLine("#   #    # #     #           ##     ##    # #    ##    #");
-            Console.WriteLine("#   #   #   #   #            # #   # #   #   #   # #   #");
-            Console.WriteLine("####   #######  #            #  # #  #  #######  #  #  #");
-            Console.WriteLine("#      #     #  #            #   #   #  #     #  #   # #");
-            Console.WriteLine("#      #     #   #           #       #  #     #  #    ##");
-            Console.WriteLine("#      #     #    ####       #       #  #     #  #     #");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.SetWindowSize(93, 40);
+            foreach (string logo in logo) 
+            {
+                Console.WriteLine(logo);
+            }
 
+            Console.ForegroundColor= ConsoleColor.Cyan;
+            Console.WriteLine("     von Leon Stark");
             Console.WriteLine();
             Console.WriteLine();
+            Console.WriteLine("                                 Select Option: ");
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("Select Option: ");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("r ==> Regeln");
-            Console.WriteLine("s ==> Spielen");
-            Console.WriteLine("x ==> Exit");
-            Console.SetCursorPosition(0, 12);
+            Console.WriteLine("                                 r ==> Regeln");
+            Console.WriteLine("                                 s ==> Spielen");
+            Console.WriteLine("                                 x ==> Exit");
+            Console.SetCursorPosition(47, 14);
             
             var key = Console.ReadKey(true);
 
@@ -67,12 +70,14 @@ namespace SEW_Game.Menu
             Console.WriteLine("Regeln:");
             Console.WriteLine("-------");
             Console.WriteLine();
-            Console.WriteLine("Du bist Pac Man und dein Ziel ist es die Punkte auf dem Spielfeld zu essen.");
+            Console.WriteLine("Du bist Pac Man und dein Ziel ist es alle Punkte auf dem Spielfeld zu essen.");
             Console.WriteLine("Verwende folgende Tasten zur Steuerung:");
             Console.WriteLine("W....nach oben bewegen");
             Console.WriteLine("A....nach links bewegen");
             Console.WriteLine("S....nach unten bewegen");
             Console.WriteLine("D....nach rechts bewegen");
+            Console.WriteLine();
+            Console.WriteLine("Aber Achtung! Die bösen Geister wollen dich verspeisen!");
             Console.WriteLine();
             Console.Write("Drücke eine beliebige Taste um zurück zu kommen.");
             Console.ReadKey();

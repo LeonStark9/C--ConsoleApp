@@ -311,19 +311,19 @@ namespace SEW_Game.Game
             {
                 case ConsoleKey.LeftArrow:
                     MovePacman(-1, 0);
-                    pacmanChar = '<';
+                    pacmanChar = '>';
                     break;
                 case ConsoleKey.RightArrow:
                     MovePacman(1, 0);
-                    pacmanChar = '>';
+                    pacmanChar = '<';
                     break;
                 case ConsoleKey.UpArrow:
                     MovePacman(0, -1);
-                    pacmanChar = '^';
+                    pacmanChar = 'v';
                     break;
                 case ConsoleKey.DownArrow:
                     MovePacman(0, 1);
-                    pacmanChar = 'v';
+                    pacmanChar = '^';
                     break;
                 case ConsoleKey.P:
                     TogglePause();
